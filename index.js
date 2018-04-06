@@ -41,16 +41,16 @@ AFRAME.registerComponent('lerp', {
     this.checkForComponentChanged();
 
     // Lerp position
+
     if (this.lerpingPosition) {
-      progress = (now - this.startLerpTimePosition) / this.duration;
-      obj3d.position.lerpVectors(this.startPosition, this.targetPosition, progress);
-      // console.log("new position", obj3d.position);
-      if (progress >= 1) {
+
+        obj3d.position.lerp(this.startPosition,this.targetPosition,speed);
+        if (progress >= 1) {
         this.lerpingPosition = false;
       }
     }
 
-    // Slerp rotation
+    // slerp rotation
     if (this.lerpingRotation) {
       progress = (now - this.startLerpTimeRotation) / this.duration;
       THREE.Quaternion.slerp(this.startRotation, this.targetRotation, obj3d.quaternion, progress);
@@ -68,7 +68,10 @@ AFRAME.registerComponent('lerp', {
       }
     }
   },
-
+    lerp :function (start, end, amt){
+    console.log('lerp function?');
+        return (1-amt)*start+amt*end
+    },
   checkForComponentChanged: function() {
     var el = this.el;
 

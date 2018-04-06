@@ -96,7 +96,7 @@
 	      }
 	    }
 
-	    // Slerp rotation
+	    // lerp rotation
 	    if (this.lerpingRotation) {
 	      progress = (now - this.startLerpTimeRotation) / this.duration;
 	      THREE.Quaternion.slerp(this.startRotation, this.targetRotation, obj3d.quaternion, progress);
